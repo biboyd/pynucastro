@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pynucastro.screening package &#8212; pynucastro 2.2.1.post12+gf656795f documentation</title>
+    <title>pynucastro.screening package &#8212; pynucastro 2.2.1.post61+g5dd3d783 documentation</title>
   
   
   
@@ -16,30 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=15ab05d9" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="_static/documentation_options.js?v=05f7f30b"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/documentation_options.js?v=cd7d3937"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -49,10 +52,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'pynucastro.screening';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Third Party Data" href="sources.html" />
+    <link rel="next" title="References" href="zreferences.html" />
     <link rel="prev" title="pynucastro.reduction package" href="pynucastro.reduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="2.2" />
   </head>
   
   
@@ -68,19 +72,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -88,7 +81,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -96,8 +88,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -113,7 +105,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -143,7 +136,7 @@
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt=""/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
   
     <p class="title logo__title">pynucastro 2.2</p>
@@ -151,15 +144,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
@@ -168,6 +157,11 @@
 <li class="toctree-l1"><a class="reference internal" href="rate_types.html">Reaction Rate Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Nuclear Properties</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sources.html">Third Party Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nucleus.html">Nuclear Properties</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exploring Networks in Python</span></p>
 <ul class="nav bd-sidenav">
@@ -178,9 +172,11 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Selecting Rates</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="library-examples.html">Selecting Rates from a Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duplicate-rates.html">Dealing with Duplicate Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="validate-example.html">Checking your network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="electron-capture-example.html">Tabulated Weak Rate Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="electron-captures.html">Combining ReacLib Rates with Electron Capture Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alternate-rates.html"><code class="docutils literal notranslate"><span class="pre">alternate_rates</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
@@ -200,15 +196,18 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="neutrino-cooling.html">Neutrino Cooling</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Writing and Integrating Networks</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exporting Networks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="networks.html">Creating Networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cxx-networks.html">AMReX Astro Microphysics Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networks.html">Exporting Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python-network.html">Python network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-cxx-network.html">Simple C++ network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fortran-network.html">Fortran Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="amrex-astro-cxx-networks.html">AMReX Astro Microphysics Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interfacing With Other Languages</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="julia.html">Integrating using DifferentialEquations.jl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Installing-Diffeqpy-Julia.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-diffeqpy-julia.html">Installing <code class="docutils literal notranslate"><span class="pre">diffeqpy</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="Example-Integrating-Network-diffeqpy.html">Example of Integrating a Network</a></li>
 
 </ul>
@@ -216,9 +215,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples in Nuclear Astrophysics</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="examples/binding-energy.html">Binding Energy per Nucleon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/pp-cno.html">p-p chain vs. CNO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/hot-CNO-breakout-example.html">hot-CNO and breakout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/triple_alpha_eval.html">Computing the Screened Triple-alpha rate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/supernova-lightcurve.html">A Supernova Lightcurve</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
@@ -234,7 +235,6 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="sources.html">Third Party Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Index</span></p>
@@ -429,24 +429,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -540,7 +532,7 @@ factor calculations.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pynucastro.screening.screen.PlasmaState.class_type">
-<span class="sig-name descname"><span class="pre">class_type</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">jitclass.PlasmaState#7f9800d95650&lt;temp:float64,dens:float64,qlam0z:float64,taufac:float64,aa:float64,abar:float64,zbar:float64,z2bar:float64,n_e:float64,gamma_e_fac:float64&gt;</span></em><a class="headerlink" href="#pynucastro.screening.screen.PlasmaState.class_type" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">class_type</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">jitclass.PlasmaState#7f678348b810&lt;temp:float64,dens:float64,qlam0z:float64,taufac:float64,aa:float64,abar:float64,zbar:float64,z2bar:float64,n_e:float64,gamma_e_fac:float64&gt;</span></em><a class="headerlink" href="#pynucastro.screening.screen.PlasmaState.class_type" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -569,7 +561,7 @@ for a specific pair of nuclei.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pynucastro.screening.screen.ScreenFactors.class_type">
-<span class="sig-name descname"><span class="pre">class_type</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">jitclass.ScreenFactors#7f97f8936c90&lt;z1:int64,z2:int64,a1:int64,a2:int64,zs13:float64,zhat:float64,zhat2:float64,lzav:float64,aznut:float64,ztilde:float64&gt;</span></em><a class="headerlink" href="#pynucastro.screening.screen.ScreenFactors.class_type" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">class_type</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">jitclass.ScreenFactors#7f674e3d0610&lt;z1:int64,z2:int64,a1:int64,a2:int64,zs13:float64,zhat:float64,zhat2:float64,lzav:float64,aznut:float64,ztilde:float64&gt;</span></em><a class="headerlink" href="#pynucastro.screening.screen.ScreenFactors.class_type" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -660,9 +652,9 @@ as returned by <a class="reference internal" href="pynucastro.networks.html#pynu
 <dl class="py function">
 <dt class="sig sig-object py" id="pynucastro.screening.screen.screen5">
 <span class="sig-prename descclassname"><span class="pre">pynucastro.screening.screen.</span></span><span class="sig-name descname"><span class="pre">screen5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pynucastro.screening.screen.PlasmaState" title="pynucastro.screening.screen.PlasmaState"><span class="pre">PlasmaState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scn_fac</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pynucastro/screening/screen.html#screen5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pynucastro.screening.screen.screen5" title="Link to this definition">#</a></dt>
-<dd><p>Calculates screening factors following the appendix of <span id="id5">Wallace <em>et al.</em> [<a class="reference internal" href="zreferences.html#id26" title="R. K. Wallace, S. E. Woosley, and T. A. Weaver. The thermonuclear model for X-ray transients. \apj , 258:696-715, July 1982. doi:10.1086/160119.">1982</a>]</span>.</p>
-<p>Based on <span id="id6">Graboske <em>et al.</em> [<a class="reference internal" href="zreferences.html#id23" title="H. C. Graboske, H. E. Dewitt, A. S. Grossman, and M. S. Cooper. Screening Factors for Nuclear Reactions. II. Intermediate Screen-Ing and Astrophysical Applications. \apj , 181:457-474, April 1973. doi:10.1086/152062.">1973</a>]</span> for weak screening. Based on
-<span id="id7">Alastuey and Jancovici [<a class="reference internal" href="zreferences.html#id24" title="A. Alastuey and B. Jancovici. Nuclear reaction rate enhancement in dense stellar matter. \apj , 226:1034-1040, December 1978. doi:10.1086/156681.">1978</a>]</span> with plasma parameters from <span id="id8">Itoh <em>et al.</em> [<a class="reference internal" href="zreferences.html#id25" title="N. Itoh, H. Totsuji, S. Ichimaru, and H. E. Dewitt. Enhancement of thermonuclear reaction rate due to strong screening. II - Ionic mixtures. \apj , 234:1079-1084, December 1979. doi:10.1086/157590.">1979</a>]</span>,
+<dd><p>Calculates screening factors following the appendix of <span id="id5">Wallace <em>et al.</em> [<a class="reference internal" href="zreferences.html#id29" title="R. K. Wallace, S. E. Woosley, and T. A. Weaver. The thermonuclear model for X-ray transients. \apj , 258:696-715, July 1982. doi:10.1086/160119.">1982</a>]</span>.</p>
+<p>Based on <span id="id6">Graboske <em>et al.</em> [<a class="reference internal" href="zreferences.html#id26" title="H. C. Graboske, H. E. Dewitt, A. S. Grossman, and M. S. Cooper. Screening Factors for Nuclear Reactions. II. Intermediate Screen-Ing and Astrophysical Applications. \apj , 181:457-474, April 1973. doi:10.1086/152062.">1973</a>]</span> for weak screening. Based on
+<span id="id7">Alastuey and Jancovici [<a class="reference internal" href="zreferences.html#id27" title="A. Alastuey and B. Jancovici. Nuclear reaction rate enhancement in dense stellar matter. \apj , 226:1034-1040, December 1978. doi:10.1086/156681.">1978</a>]</span> with plasma parameters from <span id="id8">Itoh <em>et al.</em> [<a class="reference internal" href="zreferences.html#id28" title="N. Itoh, H. Totsuji, S. Ichimaru, and H. E. Dewitt. Enhancement of thermonuclear reaction rate due to strong screening. II - Ionic mixtures. \apj , 234:1079-1084, December 1979. doi:10.1086/157590.">1979</a>]</span>,
 for strong screening.</p>
 </dd></dl>
 
@@ -673,7 +665,7 @@ for strong screening.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pynucastro.screening.screening_util.ScreeningPair">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pynucastro.screening.screening_util.</span></span><span class="sig-name descname"><span class="pre">ScreeningPair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuc1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuc2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pynucastro/screening/screening_util.html#ScreeningPair"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pynucastro.screening.screening_util.ScreeningPair" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>a pair of nuclei that will have rate screening applied.  We store a
 list of all rates that match this pair of nuclei</p>
 <dl class="py method">
@@ -686,7 +678,7 @@ list of all rates that match this pair of nuclei</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pynucastro.screening.screening_util.get_screening_map">
 <span class="sig-prename descclassname"><span class="pre">pynucastro.screening.screening_util.</span></span><span class="sig-name descname"><span class="pre">get_screening_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetric_screening</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pynucastro/screening/screening_util.html#get_screening_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pynucastro.screening.screening_util.get_screening_map" title="Link to this definition">#</a></dt>
-<dd><p>a screening map is just a list of ScreeningPar objects
+<dd><p>a screening map is just a list of ScreeningPair objects
 containing the information about nuclei pairs for screening If
 symmetric_screening=True, then for reverse rates, we screen using
 the forward rate nuclei (assuming that we got here via detailed
@@ -717,11 +709,11 @@ balance).</p>
       </div>
     </a>
     <a class="right-next"
-       href="sources.html"
+       href="zreferences.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Third Party Data</p>
+        <p class="prev-next-title">References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -732,7 +724,8 @@ balance).</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -815,8 +808,8 @@ By pynucastro development team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

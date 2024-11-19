@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pynucastro.rates.library &#8212; pynucastro 2.2.1.post12+gf656795f documentation</title>
+    <title>pynucastro.rates.library &#8212; pynucastro 2.2.1.post61+g5dd3d783 documentation</title>
   
   
   
@@ -15,30 +15,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css?v=15ab05d9" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../../_static/documentation_options.js?v=05f7f30b"></script>
-    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/documentation_options.js?v=cd7d3937"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=f281be69"></script>
@@ -50,6 +53,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="2.2" />
   </head>
   
   
@@ -65,19 +69,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -85,7 +78,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -93,8 +85,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -112,7 +104,8 @@
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -142,7 +135,7 @@
     
     
     <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
   
     <p class="title logo__title">pynucastro 2.2</p>
@@ -150,15 +143,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
@@ -167,6 +156,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../rate_types.html">Reaction Rate Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Nuclear Properties</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../sources.html">Third Party Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nucleus.html">Nuclear Properties</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exploring Networks in Python</span></p>
 <ul class="nav bd-sidenav">
@@ -177,9 +171,11 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Selecting Rates</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../library-examples.html">Selecting Rates from a Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../duplicate-rates.html">Dealing with Duplicate Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../validate-example.html">Checking your network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../electron-capture-example.html">Tabulated Weak Rate Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../electron-captures.html">Combining ReacLib Rates with Electron Capture Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../alternate-rates.html"><code class="docutils literal notranslate"><span class="pre">alternate_rates</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
@@ -199,15 +195,18 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../neutrino-cooling.html">Neutrino Cooling</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Writing and Integrating Networks</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exporting Networks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../../networks.html">Creating Networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../cxx-networks.html">AMReX Astro Microphysics Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networks.html">Exporting Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python-network.html">Python network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../simple-cxx-network.html">Simple C++ network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fortran-network.html">Fortran Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../amrex-astro-cxx-networks.html">AMReX Astro Microphysics Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interfacing With Other Languages</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../julia.html">Integrating using DifferentialEquations.jl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../Installing-Diffeqpy-Julia.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installing-diffeqpy-julia.html">Installing <code class="docutils literal notranslate"><span class="pre">diffeqpy</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../Example-Integrating-Network-diffeqpy.html">Example of Integrating a Network</a></li>
 
 </ul>
@@ -215,9 +214,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples in Nuclear Astrophysics</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/binding-energy.html">Binding Energy per Nucleon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples/pp-cno.html">p-p chain vs. CNO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples/hot-CNO-breakout-example.html">hot-CNO and breakout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples/triple_alpha_eval.html">Computing the Screened Triple-alpha rate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/supernova-lightcurve.html">A Supernova Lightcurve</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -233,7 +234,6 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../sources.html">Third Party Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zreferences.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Index</span></p>
@@ -346,24 +346,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 
 </div></div>
       
@@ -392,15 +384,19 @@ document.write(`
   <h1>Source code for pynucastro.rates.library</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">collections</span>
 <span class="kn">import</span> <span class="nn">io</span>
-<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">walk</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">from</span> <span class="nn">pynucastro.nucdata</span> <span class="kn">import</span> <span class="n">Nucleus</span><span class="p">,</span> <span class="n">UnsupportedNucleus</span>
+<span class="kn">from</span> <span class="nn">pynucastro.rates.derived_rate</span> <span class="kn">import</span> <span class="n">DerivedRate</span>
+<span class="kn">from</span> <span class="nn">pynucastro.rates.files</span> <span class="kn">import</span> <span class="p">(</span><span class="n">RateFileError</span><span class="p">,</span> <span class="n">_find_rate_file</span><span class="p">,</span>
+                                    <span class="n">get_rates_dir</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">pynucastro.rates.known_duplicates</span> <span class="kn">import</span> <span class="p">(</span><span class="n">find_duplicate_rates</span><span class="p">,</span>
                                                <span class="n">is_allowed_dupe</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">pynucastro.rates.rate</span> <span class="kn">import</span> <span class="p">(</span><span class="n">DerivedRate</span><span class="p">,</span> <span class="n">Rate</span><span class="p">,</span> <span class="n">RateFileError</span><span class="p">,</span>
-                                   <span class="n">ReacLibRate</span><span class="p">,</span> <span class="n">TabularRate</span><span class="p">,</span> <span class="n">_find_rate_file</span><span class="p">,</span>
-                                   <span class="n">get_rates_dir</span><span class="p">,</span> <span class="n">load_rate</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pynucastro.rates.rate</span> <span class="kn">import</span> <span class="n">Rate</span>
+<span class="kn">from</span> <span class="nn">pynucastro.rates.reaclib_rate</span> <span class="kn">import</span> <span class="n">ReacLibRate</span>
+<span class="kn">from</span> <span class="nn">pynucastro.rates.tabular_rate</span> <span class="kn">import</span> <span class="n">TabularRate</span>
 
 
 <div class="viewcode-block" id="list_known_rates">
@@ -408,12 +404,12 @@ document.write(`
 <span class="k">def</span> <span class="nf">list_known_rates</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; list the rates found in the library &quot;&quot;&quot;</span>
 
-    <span class="n">lib_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="si">}</span><span class="s2">/../library/&quot;</span>
+    <span class="n">lib_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="s2">&quot;library&quot;</span>
 
-    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">lib_path</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">walk</span><span class="p">(</span><span class="n">lib_path</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
             <span class="c1"># skip over files that are not rate files</span>
-            <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.md&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.dat&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.py&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.ipynb&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;.md&quot;</span><span class="p">,</span> <span class="s2">&quot;.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;.py&quot;</span><span class="p">,</span> <span class="s2">&quot;ipynb&quot;</span><span class="p">):</span>
                 <span class="k">continue</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">lib</span> <span class="o">=</span> <span class="n">Library</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -451,12 +447,10 @@ document.write(`
                 <span class="c1"># first electrons and neutrins, and nothing</span>
                 <span class="k">continue</span>
             <span class="k">if</span> <span class="n">nuc</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;pp&quot;</span><span class="p">:</span>
-                <span class="n">reactants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">))</span>
-                <span class="n">reactants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">))</span>
+                <span class="n">reactants</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">),</span> <span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">)]</span>
                 <span class="k">continue</span>
             <span class="k">if</span> <span class="n">nuc</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;aa&quot;</span><span class="p">:</span>
-                <span class="n">reactants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;he4&quot;</span><span class="p">))</span>
-                <span class="n">reactants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;he4&quot;</span><span class="p">))</span>
+                <span class="n">reactants</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;he4&quot;</span><span class="p">),</span> <span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;he4&quot;</span><span class="p">)]</span>
                 <span class="k">continue</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;couldn&#39;t deal with </span><span class="si">{</span><span class="n">nuc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="k">raise</span>
@@ -474,12 +468,10 @@ document.write(`
                 <span class="c1"># first electrons and neutrinos, gammas, and nothing</span>
                 <span class="k">continue</span>
             <span class="k">if</span> <span class="n">nuc</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;pp&quot;</span><span class="p">:</span>
-                <span class="n">products</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">))</span>
-                <span class="n">products</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">))</span>
+                <span class="n">products</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">),</span> <span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">)]</span>
                 <span class="k">continue</span>
             <span class="k">if</span> <span class="n">nuc</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;aa&quot;</span><span class="p">:</span>
-                <span class="n">products</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;he4&quot;</span><span class="p">))</span>
-                <span class="n">products</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;he4&quot;</span><span class="p">))</span>
+                <span class="n">products</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;he4&quot;</span><span class="p">),</span> <span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;he4&quot;</span><span class="p">)]</span>
                 <span class="k">continue</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;couldn&#39;t deal with </span><span class="si">{</span><span class="n">nuc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="k">raise</span>
@@ -523,30 +515,139 @@ document.write(`
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">libfile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rates</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_library_file</span> <span class="o">=</span> <span class="n">libfile</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span> <span class="o">=</span> <span class="p">{}</span>
+
         <span class="k">if</span> <span class="n">rates</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rates</span><span class="p">,</span> <span class="n">Rate</span><span class="p">):</span>
                 <span class="n">rates</span> <span class="o">=</span> <span class="p">[</span><span class="n">rates</span><span class="p">]</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rates</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span> <span class="o">=</span> <span class="n">rates</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rates</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">set</span><span class="p">)):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_add_from_rate_list</span><span class="p">(</span><span class="n">rates</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_rates</span><span class="p">(</span><span class="n">rates</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;rates in Library constructor must be a Rate object, list of Rate objects, or dictionary of Rate objects keyed by Rate.get_rate_id()&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;rates in Library constructor must be a Rate object, list of Rate objects, or dictionary of Rate objects keyed by Rate.id&quot;</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_library_source_lines</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_library_file</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_library_file</span> <span class="o">=</span> <span class="n">_find_rate_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library_file</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_read_library_file</span><span class="p">()</span>
 
+<div class="viewcode-block" id="Library.get_rates">
+<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.get_rates">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_rates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return a list of the rates in this library.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="Library.get_rate">
+<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.get_rate">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rid</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return a rate matching the id provided. &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">rid_mod</span> <span class="o">=</span> <span class="n">capitalize_rid</span><span class="p">(</span><span class="n">rid</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">[</span><span class="n">rid_mod</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="c1"># fallback to the rate fname</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">rid_mod</span> <span class="o">=</span> <span class="n">capitalize_rid</span><span class="p">(</span><span class="n">rid</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">q</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rates</span><span class="p">()</span> <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">fname</span> <span class="o">==</span> <span class="n">rid_mod</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rate identifier </span><span class="si">{</span><span class="n">rid</span><span class="si">!r}</span><span class="s2"> does not match a rate in this library.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_rates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_rates</span><span class="p">())</span>
+
+<div class="viewcode-block" id="Library.add_rate">
+<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.add_rate">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Manually add a rate by giving a Rate object&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">Rate</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;invalid Rate object </span><span class="si">{</span><span class="n">rate</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">rid</span> <span class="o">=</span> <span class="n">rate</span><span class="o">.</span><span class="n">id</span>
+
+        <span class="k">if</span> <span class="n">rid</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;supplied a Rate object already in the Library: </span><span class="si">{</span><span class="n">rid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">[</span><span class="n">rid</span><span class="p">]</span> <span class="o">=</span> <span class="n">rate</span></div>
+
+
+<div class="viewcode-block" id="Library.add_rates">
+<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.add_rates">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_rates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ratelist</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Add to the rate dictionary from the supplied list of Rate objects.&quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">rate</span> <span class="ow">in</span> <span class="n">ratelist</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_rate</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Library.get_rate_by_name">
+<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.get_rate_by_name">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_rate_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Given a string representing a rate in the form &#39;A(x,y)B&#39;</span>
+<span class="sd">        (or a list of strings for multiple rates) return the Rate</span>
+<span class="sd">        objects that match from the Library.  If there are multiple</span>
+<span class="sd">        inputs, then a list of Rate objects is returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">rate_name_list</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">rate_name_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+        <span class="n">rates_out</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">rname</span> <span class="ow">in</span> <span class="n">rate_name_list</span><span class="p">:</span>
+            <span class="n">reactants</span><span class="p">,</span> <span class="n">products</span> <span class="o">=</span> <span class="n">_rate_name_to_nuc</span><span class="p">(</span><span class="n">rname</span><span class="p">)</span>
+
+            <span class="n">rf</span> <span class="o">=</span> <span class="n">RateFilter</span><span class="p">(</span><span class="n">reactants</span><span class="o">=</span><span class="n">reactants</span><span class="p">,</span> <span class="n">products</span><span class="o">=</span><span class="n">products</span><span class="p">)</span>
+            <span class="n">_lib</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">rf</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">_lib</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rate </span><span class="si">{</span><span class="n">rname</span><span class="si">}</span><span class="s2"> not found&quot;</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="n">rates_out</span> <span class="o">+=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">get_rates</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rates_out</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rates_out</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">rates_out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">rates_out</span></div>
+
+
+<div class="viewcode-block" id="Library.remove_rate">
+<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.remove_rate">[docs]</a>
+    <span class="k">def</span> <span class="nf">remove_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Manually remove a rate from the library by supplying the</span>
+<span class="sd">        short name &quot;A(x,y)B, a Rate object, or the rate id&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">Rate</span><span class="p">):</span>
+            <span class="n">rid</span> <span class="o">=</span> <span class="n">rate</span><span class="o">.</span><span class="n">id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">rid</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">rid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span><span class="o">.</span><span class="n">id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">rid</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># we assume that a rate id as provided</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Library.get_nuclei">
+<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.get_nuclei">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_nuclei</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;get the list of unique nuclei&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">nuc</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rates</span><span class="p">()</span> <span class="k">for</span> <span class="n">nuc</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">reactants</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">products</span><span class="p">}</span></div>
+
+
 <div class="viewcode-block" id="Library.heaviest">
 <a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.heaviest">[docs]</a>
     <span class="k">def</span> <span class="nf">heaviest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Return the heaviest nuclide in this library. &quot;&quot;&quot;</span>
         <span class="n">nuc</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rates</span><span class="p">():</span>
             <span class="n">rnuc</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">heaviest</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">nuc</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">rnuc</span><span class="o">.</span><span class="n">A</span> <span class="o">&gt;</span> <span class="n">nuc</span><span class="o">.</span><span class="n">A</span> <span class="ow">or</span> <span class="p">(</span><span class="n">rnuc</span><span class="o">.</span><span class="n">A</span> <span class="o">==</span> <span class="n">nuc</span><span class="o">.</span><span class="n">A</span> <span class="ow">and</span> <span class="n">rnuc</span><span class="o">.</span><span class="n">Z</span> <span class="o">&lt;</span> <span class="n">nuc</span><span class="o">.</span><span class="n">Z</span><span class="p">):</span>
@@ -561,7 +662,7 @@ document.write(`
     <span class="k">def</span> <span class="nf">lightest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Return the lightest nuclide in this library. &quot;&quot;&quot;</span>
         <span class="n">nuc</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rates</span><span class="p">():</span>
             <span class="n">rnuc</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">lightest</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">nuc</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">rnuc</span><span class="o">.</span><span class="n">A</span> <span class="o">&lt;</span> <span class="n">nuc</span><span class="o">.</span><span class="n">A</span> <span class="ow">or</span> <span class="p">(</span><span class="n">rnuc</span><span class="o">.</span><span class="n">A</span> <span class="o">==</span> <span class="n">nuc</span><span class="o">.</span><span class="n">A</span> <span class="ow">and</span> <span class="n">rnuc</span><span class="o">.</span><span class="n">Z</span> <span class="o">&gt;</span> <span class="n">nuc</span><span class="o">.</span><span class="n">Z</span><span class="p">):</span>
@@ -571,19 +672,10 @@ document.write(`
         <span class="k">return</span> <span class="n">nuc</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_add_from_rate_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ratelist</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Add to the rate dictionary from the supplied list of Rate objects. &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ratelist</span><span class="p">:</span>
-            <span class="n">rid</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">get_rate_id</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">rid</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;supplied a Rate object already in the Library: </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">[</span><span class="n">rid</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span>
-
     <span class="k">def</span> <span class="nf">_read_library_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># loop through library file, read lines</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">flib</span><span class="p">:</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_library_file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">flib</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">flib</span><span class="p">:</span>
                 <span class="n">ls</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">ls</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
@@ -635,7 +727,7 @@ document.write(`
                 <span class="k">except</span> <span class="n">UnsupportedNucleus</span><span class="p">:</span>
                     <span class="k">pass</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">rid</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">get_rate_id</span><span class="p">()</span>
+                    <span class="n">rid</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">id</span>
                     <span class="k">if</span> <span class="n">rid</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">:</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">[</span><span class="n">rid</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">[</span><span class="n">rid</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span>
                     <span class="k">else</span><span class="p">:</span>
@@ -651,9 +743,9 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">prepend_rates_dir</span><span class="p">:</span>
-            <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_rates_dir</span><span class="p">(),</span> <span class="n">filename</span><span class="p">)</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">get_rates_dir</span><span class="p">()</span><span class="o">/</span><span class="n">filename</span>
 
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">filename</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">rate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rates</span><span class="p">():</span>
                 <span class="n">rate</span><span class="o">.</span><span class="n">write_to_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></div>
 
@@ -664,14 +756,14 @@ document.write(`
         <span class="n">tmp_rates</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">tmp_rates</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">Q</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">Q</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">rstrings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span><span class="si">:</span><span class="s1">30</span><span class="si">}</span><span class="s1"> [Q = </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span><span class="si">:</span><span class="s1">6.2f</span><span class="si">}</span><span class="s1"> MeV] (</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">get_rate_id</span><span class="p">()</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+                <span class="n">rstrings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span><span class="si">:</span><span class="s1">30</span><span class="si">}</span><span class="s1"> [Q = </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span><span class="si">:</span><span class="s1">6.2f</span><span class="si">}</span><span class="s1"> MeV] (</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">tmp_rates</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">Q</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">Q</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">rstrings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span><span class="si">:</span><span class="s1">30</span><span class="si">}</span><span class="s1"> [Q = </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span><span class="si">:</span><span class="s1">6.2f</span><span class="si">}</span><span class="s1"> MeV] (</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">get_rate_id</span><span class="p">()</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+                <span class="n">rstrings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span><span class="si">:</span><span class="s1">30</span><span class="si">}</span><span class="s1"> [Q = </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span><span class="si">:</span><span class="s1">6.2f</span><span class="si">}</span><span class="s1"> MeV] (</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">tmp_rates</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">Q</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">rstrings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span><span class="si">:</span><span class="s1">30</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">get_rate_id</span><span class="p">()</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+                <span class="n">rstrings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span><span class="si">:</span><span class="s1">30</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rstrings</span><span class="p">)</span>
 
@@ -688,40 +780,12 @@ document.write(`
         <span class="k">return</span> <span class="n">new_library</span>
 
     <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a Library containing the rates in this library that are not</span>
+<span class="sd">        contained in other_library&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Library.get_num_rates">
-<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.get_num_rates">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_num_rates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of rates known to the library&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="Library.get_rates">
-<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.get_rates">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_rates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return a list of the rates in this library. &quot;&quot;&quot;</span>
-        <span class="n">rlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
-        <span class="k">return</span> <span class="n">rlist</span></div>
-
-
-<div class="viewcode-block" id="Library.get_rate">
-<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.get_rate">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rid</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return a rate matching the id provided. &quot;&quot;&quot;</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">rid_mod</span> <span class="o">=</span> <span class="n">capitalize_rid</span><span class="p">(</span><span class="n">rid</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">[</span><span class="n">rid_mod</span><span class="p">]</span>
-        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="k">pass</span>
-
-        <span class="c1"># fallback to the rate fname</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">rid_mod</span> <span class="o">=</span> <span class="n">capitalize_rid</span><span class="p">(</span><span class="n">rid</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="p">[</span><span class="n">q</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rates</span><span class="p">()</span> <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">fname</span> <span class="o">==</span> <span class="n">rid_mod</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rate identifier </span><span class="si">{</span><span class="n">rid</span><span class="si">!r}</span><span class="s2"> does not match a rate in this library.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span></div>
-
+        <span class="n">diff_rates</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_rates</span><span class="p">())</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">get_rates</span><span class="p">())</span>
+        <span class="n">new_library</span> <span class="o">=</span> <span class="n">Library</span><span class="p">(</span><span class="n">rates</span><span class="o">=</span><span class="n">diff_rates</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_library</span>
 
 <div class="viewcode-block" id="Library.get_rate_by_nuclei">
 <a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.get_rate_by_nuclei">[docs]</a>
@@ -738,40 +802,6 @@ document.write(`
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_tmp</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">_tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">_tmp</span></div>
-
-
-<div class="viewcode-block" id="Library.get_rate_by_name">
-<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.get_rate_by_name">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_rate_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Given a string representing a rate in the form &#39;A(x,y)B&#39;</span>
-<span class="sd">        (or a list of strings for multiple rates) return the Rate</span>
-<span class="sd">        objects that match from the Library.  If there are multiple</span>
-<span class="sd">        inputs, then a list of Rate objects is returned.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">rate_name_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">rate_name_list</span> <span class="o">=</span> <span class="n">name</span>
-
-        <span class="n">rates_out</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="k">for</span> <span class="n">rname</span> <span class="ow">in</span> <span class="n">rate_name_list</span><span class="p">:</span>
-            <span class="n">reactants</span><span class="p">,</span> <span class="n">products</span> <span class="o">=</span> <span class="n">_rate_name_to_nuc</span><span class="p">(</span><span class="n">rname</span><span class="p">)</span>
-
-            <span class="n">rf</span> <span class="o">=</span> <span class="n">RateFilter</span><span class="p">(</span><span class="n">reactants</span><span class="o">=</span><span class="n">reactants</span><span class="p">,</span> <span class="n">products</span><span class="o">=</span><span class="n">products</span><span class="p">)</span>
-            <span class="n">_lib</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">rf</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">_lib</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rate </span><span class="si">{</span><span class="n">rname</span><span class="si">}</span><span class="s2"> not found&quot;</span><span class="p">)</span>
-                <span class="k">continue</span>
-            <span class="n">rates_out</span> <span class="o">+=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">get_rates</span><span class="p">()</span>
-
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rates_out</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rates_out</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">rates_out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">rates_out</span></div>
 
 
 <div class="viewcode-block" id="Library.find_duplicate_links">
@@ -799,53 +829,6 @@ document.write(`
             <span class="n">duplicates</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">dupe</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">duplicates</span></div>
-
-
-<div class="viewcode-block" id="Library.get_nuclei">
-<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.get_nuclei">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_nuclei</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;get the list of unique nuclei&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">{</span><span class="n">nuc</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rates</span><span class="p">()</span> <span class="k">for</span> <span class="n">nuc</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">reactants</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">products</span><span class="p">}</span></div>
-
-
-<div class="viewcode-block" id="Library.diff">
-<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.diff">[docs]</a>
-    <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_library</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a Library containing the rates in this library that are not</span>
-<span class="sd">        contained in other_library&quot;&quot;&quot;</span>
-
-        <span class="n">diff_rates</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_rates</span><span class="p">())</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">other_library</span><span class="o">.</span><span class="n">get_rates</span><span class="p">())</span>
-        <span class="n">new_library</span> <span class="o">=</span> <span class="n">Library</span><span class="p">(</span><span class="n">rates</span><span class="o">=</span><span class="n">diff_rates</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">new_library</span></div>
-
-
-<div class="viewcode-block" id="Library.remove_rate">
-<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.remove_rate">[docs]</a>
-    <span class="k">def</span> <span class="nf">remove_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Manually remove a rate from the library by supplying the</span>
-<span class="sd">        short name &quot;A(x,y)B, a Rate object, or the rate id&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">Rate</span><span class="p">):</span>
-            <span class="n">rid</span> <span class="o">=</span> <span class="n">rate</span><span class="o">.</span><span class="n">get_rate_id</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">rid</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">rid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span><span class="o">.</span><span class="n">get_rate_id</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">rid</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># we assume that a rate id as provided</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="Library.add_rate">
-<a class="viewcode-back" href="../../../pynucastro.rates.html#pynucastro.rates.library.Library.add_rate">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Manually add a rate by giving a Rate object&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">Rate</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">rate</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_rates</span><span class="p">[</span><span class="n">rate</span><span class="o">.</span><span class="n">get_rate_id</span><span class="p">()]</span> <span class="o">=</span> <span class="n">rate</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;invalid Rate object&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Library.linking_nuclei">
@@ -1173,7 +1156,7 @@ document.write(`
 <span class="k">class</span> <span class="nc">TabularLibrary</span><span class="p">(</span><span class="n">Library</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Load all of the tabular rates known and return a Library&quot;&quot;&quot;</span>
 
-    <span class="n">lib_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="si">}</span><span class="s2">/../library/tabular&quot;</span>
+    <span class="n">lib_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="s2">&quot;library/tabular&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># find all of the tabular rates that pynucastro knows about</span>
@@ -1181,10 +1164,10 @@ document.write(`
 
         <span class="n">trates</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lib_path</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">walk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lib_path</span><span class="p">)):</span>
             <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">filenames</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;-toki&quot;</span><span class="p">):</span>
-                    <span class="n">trates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">load_rate</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+                    <span class="n">trates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TabularRate</span><span class="p">(</span><span class="n">rfile</span><span class="o">=</span><span class="n">f</span><span class="p">))</span>
 
         <span class="n">Library</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rates</span><span class="o">=</span><span class="n">trates</span><span class="p">)</span></div>
 
@@ -1197,8 +1180,7 @@ document.write(`
 <span class="sd">    Load all of the tabular rates inside /library/tabular/suzuki/</span>
 <span class="sd">    and return a Library.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">lib_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="si">}</span><span class="s2">/../library/tabular/suzuki&quot;</span></div>
+    <span class="n">lib_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="s2">&quot;library/tabular/suzuki&quot;</span></div>
 
 
 
@@ -1210,7 +1192,7 @@ document.write(`
 <span class="sd">    and return a Library.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">lib_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="si">}</span><span class="s2">/../library/tabular/langanke&quot;</span></div>
+    <span class="n">lib_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="s2">&quot;library/tabular/langanke&quot;</span></div>
 
 </pre></div>
 
@@ -1274,8 +1256,8 @@ By pynucastro development team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

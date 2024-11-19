@@ -29,6 +29,14 @@ codes.
 
 .. toctree::
    :maxdepth: 1
+   :caption: Nuclear Properties
+   :hidden:
+
+   sources
+   nucleus
+
+.. toctree::
+   :maxdepth: 1
    :caption: Exploring Networks in Python
    :hidden:
 
@@ -42,9 +50,11 @@ codes.
    :hidden:
 
    library-examples.ipynb
+   duplicate-rates.ipynb
    validate-example.ipynb
    electron-capture-example.ipynb
    electron-captures.ipynb
+   alternate-rates.ipynb
 
 .. toctree::
    :maxdepth: 1
@@ -75,11 +85,14 @@ codes.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Writing and Integrating Networks
+   :caption: Exporting Networks
    :hidden:
 
    networks
-   cxx-networks
+   python-network
+   simple-cxx-network
+   fortran-network
+   amrex-astro-cxx-networks
 
 .. toctree::
    :maxdepth: 1
@@ -93,9 +106,11 @@ codes.
    :caption: Examples in Nuclear Astrophysics
    :hidden:
 
+   examples/binding-energy.ipynb
    examples/pp-cno.ipynb
    examples/hot-CNO-breakout-example.ipynb
    examples/triple_alpha_eval.ipynb
+   examples/supernova-lightcurve.ipynb
 
 .. toctree::
    :maxdepth: 1
@@ -104,7 +119,6 @@ codes.
 
    citing
    API <modules>
-   sources
    zreferences
 
 .. toctree::

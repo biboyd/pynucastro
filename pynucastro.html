@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pynucastro package &#8212; pynucastro 2.2.1.post12+gf656795f documentation</title>
+    <title>pynucastro package &#8212; pynucastro 2.2.1.post61+g5dd3d783 documentation</title>
   
   
   
@@ -16,30 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=15ab05d9" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="_static/documentation_options.js?v=05f7f30b"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/documentation_options.js?v=cd7d3937"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -53,6 +56,7 @@
     <link rel="prev" title="pynucastro" href="modules.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="2.2" />
   </head>
   
   
@@ -68,19 +72,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -88,7 +81,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -96,8 +88,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -113,7 +105,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -143,7 +136,7 @@
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt=""/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
   
     <p class="title logo__title">pynucastro 2.2</p>
@@ -151,15 +144,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
@@ -168,6 +157,11 @@
 <li class="toctree-l1"><a class="reference internal" href="rate_types.html">Reaction Rate Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Nuclear Properties</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sources.html">Third Party Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nucleus.html">Nuclear Properties</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exploring Networks in Python</span></p>
 <ul class="nav bd-sidenav">
@@ -178,9 +172,11 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Selecting Rates</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="library-examples.html">Selecting Rates from a Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duplicate-rates.html">Dealing with Duplicate Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="validate-example.html">Checking your network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="electron-capture-example.html">Tabulated Weak Rate Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="electron-captures.html">Combining ReacLib Rates with Electron Capture Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alternate-rates.html"><code class="docutils literal notranslate"><span class="pre">alternate_rates</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
@@ -200,15 +196,18 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="neutrino-cooling.html">Neutrino Cooling</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Writing and Integrating Networks</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exporting Networks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="networks.html">Creating Networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cxx-networks.html">AMReX Astro Microphysics Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networks.html">Exporting Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python-network.html">Python network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-cxx-network.html">Simple C++ network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fortran-network.html">Fortran Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="amrex-astro-cxx-networks.html">AMReX Astro Microphysics Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interfacing With Other Languages</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="julia.html">Integrating using DifferentialEquations.jl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Installing-Diffeqpy-Julia.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-diffeqpy-julia.html">Installing <code class="docutils literal notranslate"><span class="pre">diffeqpy</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="Example-Integrating-Network-diffeqpy.html">Example of Integrating a Network</a></li>
 
 </ul>
@@ -216,9 +215,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples in Nuclear Astrophysics</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="examples/binding-energy.html">Binding Energy per Nucleon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/pp-cno.html">p-p chain vs. CNO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/hot-CNO-breakout-example.html">hot-CNO and breakout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/triple_alpha_eval.html">Computing the Screened Triple-alpha rate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/supernova-lightcurve.html">A Supernova Lightcurve</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
@@ -234,7 +235,6 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="sources.html">Third Party Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Index</span></p>
@@ -429,24 +429,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -558,6 +550,8 @@ Microphysics repository.</p></li>
 output of basic C++ code that can be as the starting point
 for incorporating a pynucastro network into a non-AMReX
 simulation code.</p></li>
+<li><p>FortranNetwork : this is a set of wrappers around SimpleCxxNetwork
+that provide a Fortran interface.</p></li>
 </ul>
 </section>
 <section id="rates">
@@ -609,6 +603,10 @@ a given choice of reaction rates.</p>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.networks.html#module-pynucastro.networks.fortran_network">pynucastro.networks.fortran_network module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.fortran_network.FortranNetwork"><code class="docutils literal notranslate"><span class="pre">FortranNetwork</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.networks.html#module-pynucastro.networks.nse_network">pynucastro.networks.nse_network module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.nse_network.NSENetwork"><code class="docutils literal notranslate"><span class="pre">NSENetwork</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.nse_network.NSENetwork.generate_table"><code class="docutils literal notranslate"><span class="pre">NSENetwork.generate_table()</span></code></a></li>
@@ -655,10 +653,8 @@ a given choice of reaction rates.</p>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.A"><code class="docutils literal notranslate"><span class="pre">Composition.A</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.X"><code class="docutils literal notranslate"><span class="pre">Composition.X</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.Z"><code class="docutils literal notranslate"><span class="pre">Composition.Z</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.abar"><code class="docutils literal notranslate"><span class="pre">Composition.abar</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.bin_as"><code class="docutils literal notranslate"><span class="pre">Composition.bin_as()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.eval_abar"><code class="docutils literal notranslate"><span class="pre">Composition.eval_abar()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.eval_ye"><code class="docutils literal notranslate"><span class="pre">Composition.eval_ye()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.eval_zbar"><code class="docutils literal notranslate"><span class="pre">Composition.eval_zbar()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.get_molar"><code class="docutils literal notranslate"><span class="pre">Composition.get_molar()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.get_nuclei"><code class="docutils literal notranslate"><span class="pre">Composition.get_nuclei()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.get_sum_X"><code class="docutils literal notranslate"><span class="pre">Composition.get_sum_X()</span></code></a></li>
@@ -670,6 +666,8 @@ a given choice of reaction rates.</p>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.set_nuc"><code class="docutils literal notranslate"><span class="pre">Composition.set_nuc()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.set_random"><code class="docutils literal notranslate"><span class="pre">Composition.set_random()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.set_solar_like"><code class="docutils literal notranslate"><span class="pre">Composition.set_solar_like()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.ye"><code class="docutils literal notranslate"><span class="pre">Composition.ye</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Composition.zbar"><code class="docutils literal notranslate"><span class="pre">Composition.zbar</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.networks.html#pynucastro.networks.rate_collection.Explorer"><code class="docutils literal notranslate"><span class="pre">Explorer</span></code></a><ul>
@@ -735,15 +733,6 @@ a given choice of reaction rates.</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pynucastro.nucdata.html">pynucastro.nucdata package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.nucdata.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pynucastro.nucdata.html#module-pynucastro.nucdata.binding_table">pynucastro.nucdata.binding_table module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.binding_table.BindingTable"><code class="docutils literal notranslate"><span class="pre">BindingTable</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.binding_table.BindingTable.get_binding_energy"><code class="docutils literal notranslate"><span class="pre">BindingTable.get_binding_energy()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.binding_table.BindingTable.header_length"><code class="docutils literal notranslate"><span class="pre">BindingTable.header_length</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.binding_table.BindingTable.read"><code class="docutils literal notranslate"><span class="pre">BindingTable.read()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.nucdata.html#module-pynucastro.nucdata.elements">pynucastro.nucdata.elements module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.elements.Element"><code class="docutils literal notranslate"><span class="pre">Element</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.elements.PeriodicTable"><code class="docutils literal notranslate"><span class="pre">PeriodicTable</span></code></a><ul>
@@ -753,6 +742,13 @@ a given choice of reaction rates.</p>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.elements.UnidentifiedElement"><code class="docutils literal notranslate"><span class="pre">UnidentifiedElement</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.nucdata.html#module-pynucastro.nucdata.halflife_table">pynucastro.nucdata.halflife_table module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.halflife_table.HalfLifeTable"><code class="docutils literal notranslate"><span class="pre">HalfLifeTable</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.halflife_table.HalfLifeTable.get_halflife"><code class="docutils literal notranslate"><span class="pre">HalfLifeTable.get_halflife()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.nucdata.html#module-pynucastro.nucdata.mass_table">pynucastro.nucdata.mass_table module</a><ul>
@@ -768,10 +764,12 @@ a given choice of reaction rates.</p>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.nucleus.Nucleus.cast"><code class="docutils literal notranslate"><span class="pre">Nucleus.cast()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.nucleus.Nucleus.cast_list"><code class="docutils literal notranslate"><span class="pre">Nucleus.cast_list()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.nucleus.Nucleus.cindex"><code class="docutils literal notranslate"><span class="pre">Nucleus.cindex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.nucleus.Nucleus.from_Z_A"><code class="docutils literal notranslate"><span class="pre">Nucleus.from_Z_A()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.nucleus.Nucleus.from_cache"><code class="docutils literal notranslate"><span class="pre">Nucleus.from_cache()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.nucleus.UnsupportedNucleus"><code class="docutils literal notranslate"><span class="pre">UnsupportedNucleus</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.nucleus.get_all_nuclei"><code class="docutils literal notranslate"><span class="pre">get_all_nuclei()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.nucleus.get_nuclei_in_range"><code class="docutils literal notranslate"><span class="pre">get_nuclei_in_range()</span></code></a></li>
 </ul>
 </li>
@@ -807,7 +805,38 @@ a given choice of reaction rates.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pynucastro.rates.html">pynucastro.rates package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.load_rate"><code class="docutils literal notranslate"><span class="pre">load_rate()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.html#module-pynucastro.rates.alternate_rates">pynucastro.rates.alternate_rates module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.alternate_rates.DeBoerC12agO16"><code class="docutils literal notranslate"><span class="pre">DeBoerC12agO16</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.html#module-pynucastro.rates.approximate_rates">pynucastro.rates.approximate_rates module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.approximate_rates.ApproximateRate"><code class="docutils literal notranslate"><span class="pre">ApproximateRate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.approximate_rates.ApproximateRate.eval"><code class="docutils literal notranslate"><span class="pre">ApproximateRate.eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.approximate_rates.ApproximateRate.function_string_cxx"><code class="docutils literal notranslate"><span class="pre">ApproximateRate.function_string_cxx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.approximate_rates.ApproximateRate.function_string_py"><code class="docutils literal notranslate"><span class="pre">ApproximateRate.function_string_py()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.approximate_rates.ApproximateRate.get_child_rates"><code class="docutils literal notranslate"><span class="pre">ApproximateRate.get_child_rates()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.html#module-pynucastro.rates.derived_rate">pynucastro.rates.derived_rate module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.derived_rate.DerivedRate"><code class="docutils literal notranslate"><span class="pre">DerivedRate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.derived_rate.DerivedRate.counter_factors"><code class="docutils literal notranslate"><span class="pre">DerivedRate.counter_factors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.derived_rate.DerivedRate.eval"><code class="docutils literal notranslate"><span class="pre">DerivedRate.eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.derived_rate.DerivedRate.function_string_cxx"><code class="docutils literal notranslate"><span class="pre">DerivedRate.function_string_cxx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.derived_rate.DerivedRate.function_string_py"><code class="docutils literal notranslate"><span class="pre">DerivedRate.function_string_py()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.html#module-pynucastro.rates.files">pynucastro.rates.files module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.files.RateFileError"><code class="docutils literal notranslate"><span class="pre">RateFileError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.files.get_rates_dir"><code class="docutils literal notranslate"><span class="pre">get_rates_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.files.get_tabular_dir"><code class="docutils literal notranslate"><span class="pre">get_tabular_dir()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.html#module-pynucastro.rates.known_duplicates">pynucastro.rates.known_duplicates module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.known_duplicates.find_duplicate_rates"><code class="docutils literal notranslate"><span class="pre">find_duplicate_rates()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.known_duplicates.is_allowed_dupe"><code class="docutils literal notranslate"><span class="pre">is_allowed_dupe()</span></code></a></li>
@@ -820,15 +849,14 @@ a given choice of reaction rates.</p>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library"><code class="docutils literal notranslate"><span class="pre">Library</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.add_rate"><code class="docutils literal notranslate"><span class="pre">Library.add_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.add_rates"><code class="docutils literal notranslate"><span class="pre">Library.add_rates()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.backward"><code class="docutils literal notranslate"><span class="pre">Library.backward()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.derived_backward"><code class="docutils literal notranslate"><span class="pre">Library.derived_backward()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.derived_forward"><code class="docutils literal notranslate"><span class="pre">Library.derived_forward()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.diff"><code class="docutils literal notranslate"><span class="pre">Library.diff()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.filter"><code class="docutils literal notranslate"><span class="pre">Library.filter()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.find_duplicate_links"><code class="docutils literal notranslate"><span class="pre">Library.find_duplicate_links()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.forward"><code class="docutils literal notranslate"><span class="pre">Library.forward()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.get_nuclei"><code class="docutils literal notranslate"><span class="pre">Library.get_nuclei()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.get_num_rates"><code class="docutils literal notranslate"><span class="pre">Library.get_num_rates()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.get_rate"><code class="docutils literal notranslate"><span class="pre">Library.get_rate()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.get_rate_by_name"><code class="docutils literal notranslate"><span class="pre">Library.get_rate_by_name()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.get_rate_by_nuclei"><code class="docutils literal notranslate"><span class="pre">Library.get_rate_by_nuclei()</span></code></a></li>
@@ -836,6 +864,7 @@ a given choice of reaction rates.</p>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.heaviest"><code class="docutils literal notranslate"><span class="pre">Library.heaviest()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.lightest"><code class="docutils literal notranslate"><span class="pre">Library.lightest()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.linking_nuclei"><code class="docutils literal notranslate"><span class="pre">Library.linking_nuclei()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.num_rates"><code class="docutils literal notranslate"><span class="pre">Library.num_rates</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.remove_rate"><code class="docutils literal notranslate"><span class="pre">Library.remove_rate()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.library.Library.write_to_file"><code class="docutils literal notranslate"><span class="pre">Library.write_to_file()</span></code></a></li>
 </ul>
@@ -859,84 +888,80 @@ a given choice of reaction rates.</p>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.html#module-pynucastro.rates.rate">pynucastro.rates.rate module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ApproximateRate"><code class="docutils literal notranslate"><span class="pre">ApproximateRate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ApproximateRate.eval"><code class="docutils literal notranslate"><span class="pre">ApproximateRate.eval()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ApproximateRate.function_string_cxx"><code class="docutils literal notranslate"><span class="pre">ApproximateRate.function_string_cxx()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ApproximateRate.function_string_py"><code class="docutils literal notranslate"><span class="pre">ApproximateRate.function_string_py()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ApproximateRate.get_child_rates"><code class="docutils literal notranslate"><span class="pre">ApproximateRate.get_child_rates()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.DerivedRate"><code class="docutils literal notranslate"><span class="pre">DerivedRate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.DerivedRate.counter_factors"><code class="docutils literal notranslate"><span class="pre">DerivedRate.counter_factors()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.DerivedRate.eval"><code class="docutils literal notranslate"><span class="pre">DerivedRate.eval()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.DerivedRate.function_string_cxx"><code class="docutils literal notranslate"><span class="pre">DerivedRate.function_string_cxx()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.DerivedRate.function_string_py"><code class="docutils literal notranslate"><span class="pre">DerivedRate.function_string_py()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.Rate"><code class="docutils literal notranslate"><span class="pre">Rate</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.Rate.cname"><code class="docutils literal notranslate"><span class="pre">Rate.cname()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.Rate.eval"><code class="docutils literal notranslate"><span class="pre">Rate.eval()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.Rate.eval_jacobian_term"><code class="docutils literal notranslate"><span class="pre">Rate.eval_jacobian_term()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.Rate.get_rate_id"><code class="docutils literal notranslate"><span class="pre">Rate.get_rate_id()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.Rate.heaviest"><code class="docutils literal notranslate"><span class="pre">Rate.heaviest()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.Rate.id"><code class="docutils literal notranslate"><span class="pre">Rate.id</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.Rate.jacobian_string_py"><code class="docutils literal notranslate"><span class="pre">Rate.jacobian_string_py()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.Rate.lightest"><code class="docutils literal notranslate"><span class="pre">Rate.lightest()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.Rate.ydot_string_py"><code class="docutils literal notranslate"><span class="pre">Rate.ydot_string_py()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.RateFileError"><code class="docutils literal notranslate"><span class="pre">RateFileError</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.RatePair"><code class="docutils literal notranslate"><span class="pre">RatePair</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ReacLibRate"><code class="docutils literal notranslate"><span class="pre">ReacLibRate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ReacLibRate.eval"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.eval()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ReacLibRate.eval_deriv"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.eval_deriv()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ReacLibRate.function_string_cxx"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.function_string_cxx()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ReacLibRate.function_string_py"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.function_string_py()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ReacLibRate.get_rate_exponent"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.get_rate_exponent()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ReacLibRate.get_rate_id"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.get_rate_id()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ReacLibRate.modify_products"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.modify_products()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ReacLibRate.plot"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.plot()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.ReacLibRate.write_to_file"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.write_to_file()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.SingleSet"><code class="docutils literal notranslate"><span class="pre">SingleSet</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.SingleSet.dfdT"><code class="docutils literal notranslate"><span class="pre">SingleSet.dfdT()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.SingleSet.dln_set_string_dT9_cxx"><code class="docutils literal notranslate"><span class="pre">SingleSet.dln_set_string_dT9_cxx()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.SingleSet.f"><code class="docutils literal notranslate"><span class="pre">SingleSet.f()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.SingleSet.set_string_cxx"><code class="docutils literal notranslate"><span class="pre">SingleSet.set_string_cxx()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.SingleSet.set_string_py"><code class="docutils literal notranslate"><span class="pre">SingleSet.set_string_py()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TableIndex"><code class="docutils literal notranslate"><span class="pre">TableIndex</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TableIndex.DQ"><code class="docutils literal notranslate"><span class="pre">TableIndex.DQ</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TableIndex.GAMMA"><code class="docutils literal notranslate"><span class="pre">TableIndex.GAMMA</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TableIndex.MU"><code class="docutils literal notranslate"><span class="pre">TableIndex.MU</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TableIndex.NU"><code class="docutils literal notranslate"><span class="pre">TableIndex.NU</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TableIndex.RATE"><code class="docutils literal notranslate"><span class="pre">TableIndex.RATE</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TableIndex.RHOY"><code class="docutils literal notranslate"><span class="pre">TableIndex.RHOY</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TableIndex.T"><code class="docutils literal notranslate"><span class="pre">TableIndex.T</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TableIndex.VS"><code class="docutils literal notranslate"><span class="pre">TableIndex.VS</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TableInterpolator"><code class="docutils literal notranslate"><span class="pre">TableInterpolator</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TableInterpolator.class_type"><code class="docutils literal notranslate"><span class="pre">TableInterpolator.class_type</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TabularRate"><code class="docutils literal notranslate"><span class="pre">TabularRate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TabularRate.eval"><code class="docutils literal notranslate"><span class="pre">TabularRate.eval()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TabularRate.function_string_py"><code class="docutils literal notranslate"><span class="pre">TabularRate.function_string_py()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TabularRate.get_nu_loss"><code class="docutils literal notranslate"><span class="pre">TabularRate.get_nu_loss()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TabularRate.get_rate_id"><code class="docutils literal notranslate"><span class="pre">TabularRate.get_rate_id()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TabularRate.get_tabular_rate"><code class="docutils literal notranslate"><span class="pre">TabularRate.get_tabular_rate()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.TabularRate.plot"><code class="docutils literal notranslate"><span class="pre">TabularRate.plot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.RateSource"><code class="docutils literal notranslate"><span class="pre">RateSource</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.RateSource.csv_path"><code class="docutils literal notranslate"><span class="pre">RateSource.csv_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.RateSource.labels"><code class="docutils literal notranslate"><span class="pre">RateSource.labels</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.RateSource.source"><code class="docutils literal notranslate"><span class="pre">RateSource.source()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.RateSource.urls"><code class="docutils literal notranslate"><span class="pre">RateSource.urls</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.Tfactors"><code class="docutils literal notranslate"><span class="pre">Tfactors</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.Tfactors.class_type"><code class="docutils literal notranslate"><span class="pre">Tfactors.class_type</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.get_rates_dir"><code class="docutils literal notranslate"><span class="pre">get_rates_dir()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.get_tabular_dir"><code class="docutils literal notranslate"><span class="pre">get_tabular_dir()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.rate.load_rate"><code class="docutils literal notranslate"><span class="pre">load_rate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.html#module-pynucastro.rates.reaclib_rate">pynucastro.rates.reaclib_rate module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.ReacLibRate"><code class="docutils literal notranslate"><span class="pre">ReacLibRate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.ReacLibRate.eval"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.ReacLibRate.eval_deriv"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.eval_deriv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.ReacLibRate.function_string_cxx"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.function_string_cxx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.ReacLibRate.function_string_py"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.function_string_py()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.ReacLibRate.get_rate_exponent"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.get_rate_exponent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.ReacLibRate.get_rate_id"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.get_rate_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.ReacLibRate.modify_products"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.modify_products()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.ReacLibRate.plot"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.ReacLibRate.write_to_file"><code class="docutils literal notranslate"><span class="pre">ReacLibRate.write_to_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.SingleSet"><code class="docutils literal notranslate"><span class="pre">SingleSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.SingleSet.dfdT"><code class="docutils literal notranslate"><span class="pre">SingleSet.dfdT()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.SingleSet.dln_set_string_dT9_cxx"><code class="docutils literal notranslate"><span class="pre">SingleSet.dln_set_string_dT9_cxx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.SingleSet.f"><code class="docutils literal notranslate"><span class="pre">SingleSet.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.SingleSet.set_string_cxx"><code class="docutils literal notranslate"><span class="pre">SingleSet.set_string_cxx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.reaclib_rate.SingleSet.set_string_py"><code class="docutils literal notranslate"><span class="pre">SingleSet.set_string_py()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.html#module-pynucastro.rates.tabular_rate">pynucastro.rates.tabular_rate module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TableIndex"><code class="docutils literal notranslate"><span class="pre">TableIndex</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TableIndex.DQ"><code class="docutils literal notranslate"><span class="pre">TableIndex.DQ</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TableIndex.GAMMA"><code class="docutils literal notranslate"><span class="pre">TableIndex.GAMMA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TableIndex.MU"><code class="docutils literal notranslate"><span class="pre">TableIndex.MU</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TableIndex.NU"><code class="docutils literal notranslate"><span class="pre">TableIndex.NU</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TableIndex.RATE"><code class="docutils literal notranslate"><span class="pre">TableIndex.RATE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TableIndex.RHOY"><code class="docutils literal notranslate"><span class="pre">TableIndex.RHOY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TableIndex.T"><code class="docutils literal notranslate"><span class="pre">TableIndex.T</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TableIndex.VS"><code class="docutils literal notranslate"><span class="pre">TableIndex.VS</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TableInterpolator"><code class="docutils literal notranslate"><span class="pre">TableInterpolator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TableInterpolator.class_type"><code class="docutils literal notranslate"><span class="pre">TableInterpolator.class_type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TabularRate"><code class="docutils literal notranslate"><span class="pre">TabularRate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TabularRate.eval"><code class="docutils literal notranslate"><span class="pre">TabularRate.eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TabularRate.function_string_py"><code class="docutils literal notranslate"><span class="pre">TabularRate.function_string_py()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TabularRate.get_nu_loss"><code class="docutils literal notranslate"><span class="pre">TabularRate.get_nu_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TabularRate.get_rate_id"><code class="docutils literal notranslate"><span class="pre">TabularRate.get_rate_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TabularRate.get_tabular_rate"><code class="docutils literal notranslate"><span class="pre">TabularRate.get_tabular_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.html#pynucastro.rates.tabular_rate.TabularRate.plot"><code class="docutils literal notranslate"><span class="pre">TabularRate.plot()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1065,7 +1090,8 @@ a given choice of reaction rates.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1129,8 +1155,8 @@ By pynucastro development team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

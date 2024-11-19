@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reverse Rates &#8212; pynucastro 2.2.1.post12+gf656795f documentation</title>
+    <title>Reverse Rates &#8212; pynucastro 2.2.1.post61+g5dd3d783 documentation</title>
   
   
   
@@ -16,30 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=15ab05d9" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="_static/documentation_options.js?v=05f7f30b"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/documentation_options.js?v=cd7d3937"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -55,6 +58,7 @@
     <link rel="prev" title="Removing Unimportant Rates" href="unimportant-rates.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="2.2" />
   </head>
   
   
@@ -70,19 +74,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -90,7 +83,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -98,8 +90,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -115,7 +107,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -145,7 +138,7 @@
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt=""/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
   
     <p class="title logo__title">pynucastro 2.2</p>
@@ -153,15 +146,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
@@ -170,6 +159,11 @@
 <li class="toctree-l1"><a class="reference internal" href="rate_types.html">Reaction Rate Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Nuclear Properties</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sources.html">Third Party Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nucleus.html">Nuclear Properties</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exploring Networks in Python</span></p>
 <ul class="nav bd-sidenav">
@@ -180,9 +174,11 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Selecting Rates</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="library-examples.html">Selecting Rates from a Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duplicate-rates.html">Dealing with Duplicate Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="validate-example.html">Checking your network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="electron-capture-example.html">Tabulated Weak Rate Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="electron-captures.html">Combining ReacLib Rates with Electron Capture Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alternate-rates.html"><code class="docutils literal notranslate"><span class="pre">alternate_rates</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="current nav bd-sidenav">
@@ -202,15 +198,18 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="neutrino-cooling.html">Neutrino Cooling</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Writing and Integrating Networks</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exporting Networks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="networks.html">Creating Networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cxx-networks.html">AMReX Astro Microphysics Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networks.html">Exporting Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python-network.html">Python network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-cxx-network.html">Simple C++ network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fortran-network.html">Fortran Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="amrex-astro-cxx-networks.html">AMReX Astro Microphysics Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interfacing With Other Languages</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="julia.html">Integrating using DifferentialEquations.jl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Installing-Diffeqpy-Julia.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-diffeqpy-julia.html">Installing <code class="docutils literal notranslate"><span class="pre">diffeqpy</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="Example-Integrating-Network-diffeqpy.html">Example of Integrating a Network</a></li>
 
 </ul>
@@ -218,9 +217,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples in Nuclear Astrophysics</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="examples/binding-energy.html">Binding Energy per Nucleon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/pp-cno.html">p-p chain vs. CNO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/hot-CNO-breakout-example.html">hot-CNO and breakout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/triple_alpha_eval.html">Computing the Screened Triple-alpha rate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/supernova-lightcurve.html">A Supernova Lightcurve</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -236,7 +237,6 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="sources.html">Third Party Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Index</span></p>
@@ -431,24 +431,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -490,7 +482,7 @@ document.write(`
   <section id="reverse-rates">
 <h1>Reverse Rates<a class="headerlink" href="#reverse-rates" title="Link to this heading">#</a></h1>
 <p>In this section we will implement the partition functions discussed in
-<span id="id1">Rauscher and Thielemann [<a class="reference internal" href="zreferences.html#id19" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">2000</a>]</span> and <span id="id2">Rauscher [<a class="reference internal" href="zreferences.html#id20" title="T. Rauscher. Nuclear partition functions at temperatures exceeding 10^10 K. The Astrophysical Journal Supplement Series, 147(2):403, August 2003. doi:10.1086/375733.">2003</a>]</span>
+<span id="id1">Rauscher and Thielemann [<a class="reference internal" href="zreferences.html#id22" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">2000</a>]</span> and <span id="id2">Rauscher [<a class="reference internal" href="zreferences.html#id23" title="T. Rauscher. Nuclear partition functions at temperatures exceeding 10^10 K. The Astrophysical Journal Supplement Series, 147(2):403, August 2003. doi:10.1086/375733.">2003</a>]</span>
 with the purpose to compute inverse rates at extreme temperatures and heavy nuclide conditions.</p>
 <section id="the-semi-relativistic-ideal-gas-model">
 <h2>The Semi-Relativistic Ideal Gas Model<a class="headerlink" href="#the-semi-relativistic-ideal-gas-model" title="Link to this heading">#</a></h2>
@@ -525,12 +517,12 @@ semi-relativistic ideal gas by:</p>
 <p>or equivalently,</p>
 <div class="math notranslate nohighlight">
 \[\mu = kT \log \left[\dfrac{n}{g}\left( \dfrac{2\pi \hbar^2}{mkT} \right)^{3/2} \right] + mc^2\]</div>
-<p>as summarized in <span id="id3">[<a class="reference internal" href="zreferences.html#id19" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">Rauscher and Thielemann, 2000</a>]</span>.</p>
+<p>as summarized in <span id="id3">[<a class="reference internal" href="zreferences.html#id22" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">Rauscher and Thielemann, 2000</a>]</span>.</p>
 </section>
 <section id="the-reverse-rates-definition">
 <h2>The Reverse Rates Definition<a class="headerlink" href="#the-reverse-rates-definition" title="Link to this heading">#</a></h2>
 <p>The forward and reverse reactions are entangled due to thermodynamical and nuclear equilibrium aspects. In this section we will see how this connection is introduced
-and explore its consequences in the nuclear rates computation, as discussed in <span id="id4">[<a class="reference internal" href="zreferences.html#id19" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">Rauscher and Thielemann, 2000</a>]</span>. Starting with the reaction:</p>
+and explore its consequences in the nuclear rates computation, as discussed in <span id="id4">[<a class="reference internal" href="zreferences.html#id22" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">Rauscher and Thielemann, 2000</a>]</span>. Starting with the reaction:</p>
 <div class="math notranslate nohighlight">
 \[A + B \rightarrow C\]</div>
 <p>characterized by a positive Q-capture energy, we may define the reverse reaction as:</p>
@@ -579,7 +571,7 @@ and explore its consequences in the nuclear rates computation, as discussed in <
 <div class="math notranslate nohighlight">
 \[\dfrac{N_a\langle \sigma v \rangle_m}{N_a\langle \sigma v \rangle_i} = \left(\dfrac{A_iA_j}{A_oA_m} \right)^{3/2}\dfrac{g_ig_j}{g_og_m}  \times e^{-Q/(kT)}\]</div>
 <p>Now, the ingoing and outgoing are far apart in comparison with the nucleus size before the collision takes place; this allow us to assume that particles like <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(o\)</span> are in their ground state as they approach. Hence,
-<span class="math notranslate nohighlight">\(g_j = (2J_j+1)\)</span> and <span class="math notranslate nohighlight">\(g_o = (2J_o + 1)\)</span> where <span class="math notranslate nohighlight">\(J_j\)</span> and <span class="math notranslate nohighlight">\(J_o\)</span> are the <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(o\)</span> particle spin in their respective ground state. However, the target and residual nucleus <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(m\)</span> particle spin, may be in a superposition of states due to excitation of upper levels caused by an steady increase of the temperature. As pointed out in <span id="id5">[<a class="reference internal" href="zreferences.html#id19" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">Rauscher and Thielemann, 2000</a>]</span>, we have to replace <span class="math notranslate nohighlight">\(g_i\rightarrow (2J_i+1)G_i\)</span> and <span class="math notranslate nohighlight">\(g_m\rightarrow (2J_m+1)G_m\)</span>, where</p>
+<span class="math notranslate nohighlight">\(g_j = (2J_j+1)\)</span> and <span class="math notranslate nohighlight">\(g_o = (2J_o + 1)\)</span> where <span class="math notranslate nohighlight">\(J_j\)</span> and <span class="math notranslate nohighlight">\(J_o\)</span> are the <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(o\)</span> particle spin in their respective ground state. However, the target and residual nucleus <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(m\)</span> particle spin, may be in a superposition of states due to excitation of upper levels caused by an steady increase of the temperature. As pointed out in <span id="id5">[<a class="reference internal" href="zreferences.html#id22" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">Rauscher and Thielemann, 2000</a>]</span>, we have to replace <span class="math notranslate nohighlight">\(g_i\rightarrow (2J_i+1)G_i\)</span> and <span class="math notranslate nohighlight">\(g_m\rightarrow (2J_m+1)G_m\)</span>, where</p>
 <div class="math notranslate nohighlight">
 \begin{eqnarray}
 (2J_i+1)G_i &amp;=&amp; \sum_{\mu} (2J^{\mu}_i+1) \exp\left(-E_i^{\mu}/(kT)\right)\\
@@ -602,7 +594,7 @@ N_a\langle \sigma v \rangle_m &amp;=&amp; N_a\langle \sigma v \rangle_m' \dfrac{
 <ul class="simple">
 <li><p><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.partition_function.PartitionFunction" title="pynucastro.nucdata.partition_function.PartitionFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">PartitionFunction</span></code></a> materialize the temperature and the partition function values into an object, interpolating across all the defined points using a cubic spline interpolation. If a temperature value is outside the temperature range, we keep its value constant to the nearest boundary value.</p></li>
 <li><p><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.partition_function.PartitionFunctionTable" title="pynucastro.nucdata.partition_function.PartitionFunctionTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">PartitionFunctionTable</span></code></a>  reads a table and construct a dictionary between each nucleus and their partition function class object.</p></li>
-<li><p><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.partition_function.PartitionFunctionCollection" title="pynucastro.nucdata.partition_function.PartitionFunctionCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">PartitionFunctionCollection</span></code></a> collects all the formatted table information, inside <code class="docutils literal notranslate"><span class="pre">/nucdata/PartitionFunction/</span></code>. It allow us to include the high temperature tables in <span id="id6">[<a class="reference internal" href="zreferences.html#id20" title="T. Rauscher. Nuclear partition functions at temperatures exceeding 10^10 K. The Astrophysical Journal Supplement Series, 147(2):403, August 2003. doi:10.1086/375733.">Rauscher, 2003</a>]</span> and to select the model used to compute the partition functions, respectively. By default, we include high temperatures, and our partition function model to be the <em>finite range droplet model (FRDM)</em>. If a nucleus is not in the collection, we set the partition function values to 1.0 by default.</p></li>
+<li><p><a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.partition_function.PartitionFunctionCollection" title="pynucastro.nucdata.partition_function.PartitionFunctionCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">PartitionFunctionCollection</span></code></a> collects all the formatted table information, inside <code class="docutils literal notranslate"><span class="pre">/nucdata/PartitionFunction/</span></code>. It allow us to include the high temperature tables in <span id="id6">[<a class="reference internal" href="zreferences.html#id23" title="T. Rauscher. Nuclear partition functions at temperatures exceeding 10^10 K. The Astrophysical Journal Supplement Series, 147(2):403, August 2003. doi:10.1086/375733.">Rauscher, 2003</a>]</span> and to select the model used to compute the partition functions, respectively. By default, we include high temperatures, and our partition function model to be the <em>finite range droplet model (FRDM)</em>. If a nucleus is not in the collection, we set the partition function values to 1.0 by default.</p></li>
 </ul>
 <p>Inside the <a class="reference internal" href="pynucastro.nucdata.html#pynucastro.nucdata.nucleus.Nucleus" title="pynucastro.nucdata.nucleus.Nucleus"><code class="xref py py-class docutils literal notranslate"><span class="pre">Nucleus</span></code></a> class, we have defined <code class="docutils literal notranslate"><span class="pre">set_partition_function()</span></code> which setup our partition function collection, our high temperatures consideration, and the model used to compute the partition function data. On the other hand, <code class="docutils literal notranslate"><span class="pre">get_partition_function()</span></code> assigns a partition function class object to the defined nucleus. Let us illustrate how it work:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pynucastro</span>
@@ -671,7 +663,8 @@ and setup all the nucleus inside the reaction rate. Let us illustrate now, how i
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -732,8 +725,8 @@ By pynucastro development team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

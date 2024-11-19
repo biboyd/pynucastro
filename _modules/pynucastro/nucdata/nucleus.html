@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pynucastro.nucdata.nucleus &#8212; pynucastro 2.2.1.post12+gf656795f documentation</title>
+    <title>pynucastro.nucdata.nucleus &#8212; pynucastro 2.2.1.post61+g5dd3d783 documentation</title>
   
   
   
@@ -15,30 +15,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css?v=15ab05d9" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../../_static/documentation_options.js?v=05f7f30b"></script>
-    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/documentation_options.js?v=cd7d3937"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=f281be69"></script>
@@ -50,6 +53,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="2.2" />
   </head>
   
   
@@ -65,19 +69,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -85,7 +78,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -93,8 +85,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -112,7 +104,8 @@
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -142,7 +135,7 @@
     
     
     <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
   
     <p class="title logo__title">pynucastro 2.2</p>
@@ -150,15 +143,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
@@ -167,6 +156,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../rate_types.html">Reaction Rate Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Nuclear Properties</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../sources.html">Third Party Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nucleus.html">Nuclear Properties</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exploring Networks in Python</span></p>
 <ul class="nav bd-sidenav">
@@ -177,9 +171,11 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Selecting Rates</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../library-examples.html">Selecting Rates from a Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../duplicate-rates.html">Dealing with Duplicate Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../validate-example.html">Checking your network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../electron-capture-example.html">Tabulated Weak Rate Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../electron-captures.html">Combining ReacLib Rates with Electron Capture Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../alternate-rates.html"><code class="docutils literal notranslate"><span class="pre">alternate_rates</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
@@ -199,15 +195,18 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../neutrino-cooling.html">Neutrino Cooling</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Writing and Integrating Networks</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exporting Networks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../../networks.html">Creating Networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../cxx-networks.html">AMReX Astro Microphysics Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networks.html">Exporting Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python-network.html">Python network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../simple-cxx-network.html">Simple C++ network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fortran-network.html">Fortran Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../amrex-astro-cxx-networks.html">AMReX Astro Microphysics Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interfacing With Other Languages</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../julia.html">Integrating using DifferentialEquations.jl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../Installing-Diffeqpy-Julia.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installing-diffeqpy-julia.html">Installing <code class="docutils literal notranslate"><span class="pre">diffeqpy</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../Example-Integrating-Network-diffeqpy.html">Example of Integrating a Network</a></li>
 
 </ul>
@@ -215,9 +214,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples in Nuclear Astrophysics</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/binding-energy.html">Binding Energy per Nucleon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples/pp-cno.html">p-p chain vs. CNO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples/hot-CNO-breakout-example.html">hot-CNO and breakout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples/triple_alpha_eval.html">Computing the Screened Triple-alpha rate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/supernova-lightcurve.html">A Supernova Lightcurve</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -233,7 +234,6 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../sources.html">Third Party Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zreferences.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Index</span></p>
@@ -346,24 +346,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 
 </div></div>
       
@@ -394,28 +386,24 @@ document.write(`
 <span class="sd">Classes and methods to interface with files storing rate data.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">from</span> <span class="nn">pynucastro.constants</span> <span class="kn">import</span> <span class="n">constants</span>
-<span class="kn">from</span> <span class="nn">pynucastro.nucdata.binding_table</span> <span class="kn">import</span> <span class="n">BindingTable</span>
-<span class="kn">from</span> <span class="nn">pynucastro.nucdata.elements</span> <span class="kn">import</span> <span class="n">PeriodicTable</span>
+<span class="kn">from</span> <span class="nn">pynucastro.nucdata.elements</span> <span class="kn">import</span> <span class="n">PeriodicTable</span><span class="p">,</span> <span class="n">UnidentifiedElement</span>
+<span class="kn">from</span> <span class="nn">pynucastro.nucdata.halflife_table</span> <span class="kn">import</span> <span class="n">HalfLifeTable</span>
 <span class="kn">from</span> <span class="nn">pynucastro.nucdata.mass_table</span> <span class="kn">import</span> <span class="n">MassTable</span>
 <span class="kn">from</span> <span class="nn">pynucastro.nucdata.partition_function</span> <span class="kn">import</span> <span class="n">PartitionFunctionCollection</span>
 <span class="kn">from</span> <span class="nn">pynucastro.nucdata.spin_table</span> <span class="kn">import</span> <span class="n">SpinTable</span>
 
-<span class="n">_pynucastro_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))</span>
-<span class="n">_pynucastro_rates_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_pynucastro_dir</span><span class="p">,</span> <span class="s1">&#39;library&#39;</span><span class="p">)</span>
-<span class="n">_pynucastro_tabular_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_pynucastro_rates_dir</span><span class="p">,</span> <span class="s1">&#39;tabular&#39;</span><span class="p">)</span>
+<span class="n">_pynucastro_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">_pynucastro_rates_dir</span> <span class="o">=</span> <span class="n">_pynucastro_dir</span><span class="o">/</span><span class="s1">&#39;library&#39;</span>
+<span class="n">_pynucastro_tabular_dir</span> <span class="o">=</span> <span class="n">_pynucastro_rates_dir</span><span class="o">/</span><span class="s1">&#39;tabular&#39;</span>
 
-<span class="c1">#read the mass excess table once and store it at the module-level</span>
+<span class="c1"># read the various tables with nuclear properties at the module-level</span>
 <span class="n">_mass_table</span> <span class="o">=</span> <span class="n">MassTable</span><span class="p">()</span>
-
-<span class="c1">#read the spin table once and store it at the module-level</span>
+<span class="n">_halflife_table</span> <span class="o">=</span> <span class="n">HalfLifeTable</span><span class="p">()</span>
 <span class="n">_spin_table</span> <span class="o">=</span> <span class="n">SpinTable</span><span class="p">(</span><span class="n">reliable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># read the binding energy table once and store it at the module-level</span>
-<span class="n">_binding_table</span> <span class="o">=</span> <span class="n">BindingTable</span><span class="p">()</span>
 
 <span class="c1"># read the partition function table once and store it at the module-level</span>
 <span class="n">_pcollection</span> <span class="o">=</span> <span class="n">PartitionFunctionCollection</span><span class="p">(</span><span class="n">use_high_temperatures</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_set</span><span class="o">=</span><span class="s1">&#39;frdm&#39;</span><span class="p">)</span>
@@ -444,8 +432,10 @@ document.write(`
 <span class="sd">    :var caps_name:       capitalized short species name (e.g. &quot;He4&quot;)</span>
 <span class="sd">    :var el:              element name (e.g. &quot;he&quot;)</span>
 <span class="sd">    :var pretty:          LaTeX formatted version of the nucleus name</span>
-<span class="sd">    :var A_nuc:           Nuclear Mass in amu</span>
-
+<span class="sd">    :var dm:              mass excess (MeV)</span>
+<span class="sd">    :var A_nuc:           nuclear mass (amu)</span>
+<span class="sd">    :var mass:            nuclear mass (MeV)</span>
+<span class="sd">    :var tau:             half life (s)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_cache</span> <span class="o">=</span> <span class="p">{}</span>
 
@@ -532,17 +522,26 @@ document.write(`
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">partition_function</span> <span class="o">=</span> <span class="kc">None</span>
 
+        <span class="c1"># nuclear mass</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">nucbind</span> <span class="o">=</span> <span class="n">_binding_table</span><span class="o">.</span><span class="n">get_binding_energy</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">)</span>
+            <span class="n">mass_H</span> <span class="o">=</span> <span class="n">_mass_table</span><span class="o">.</span><span class="n">get_mass_diff</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">constants</span><span class="o">.</span><span class="n">m_u_MeV</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dm</span> <span class="o">=</span> <span class="n">_mass_table</span><span class="o">.</span><span class="n">get_mass_diff</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A_nuc</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dm</span> <span class="o">/</span> <span class="n">constants</span><span class="o">.</span><span class="n">m_u_MeV</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">*</span> <span class="n">constants</span><span class="o">.</span><span class="n">m_u_MeV</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dm</span>
+            <span class="n">B</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">*</span> <span class="n">mass_H</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">*</span> <span class="n">constants</span><span class="o">.</span><span class="n">m_n_MeV</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mass</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nucbind</span> <span class="o">=</span> <span class="n">B</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span>
+
         <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
-            <span class="c1"># the binding energy table doesn&#39;t know about this nucleus</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dm</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A_nuc</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nucbind</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="c1"># Now we will define the Nuclear Mass,</span>
+        <span class="c1"># halflife</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">A_nuc</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">)</span> <span class="o">+</span> <span class="n">_mass_table</span><span class="o">.</span><span class="n">get_mass_diff</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">)</span> <span class="o">/</span> <span class="n">constants</span><span class="o">.</span><span class="n">m_u_MeV</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tau</span> <span class="o">=</span> <span class="n">_halflife_table</span><span class="o">.</span><span class="n">get_halflife</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">A_nuc</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tau</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="Nucleus.from_cache">
 <a class="viewcode-back" href="../../../pynucastro.nucdata.html#pynucastro.nucdata.nucleus.Nucleus.from_cache">[docs]</a>
@@ -550,8 +549,35 @@ document.write(`
     <span class="k">def</span> <span class="nf">from_cache</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dummy</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">dummy</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_cache</span><span class="p">:</span>
-            <span class="bp">cls</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">Nucleus</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">dummy</span><span class="p">)</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">dummy</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Nucleus.from_Z_A">
+<a class="viewcode-back" href="../../../pynucastro.nucdata.html#pynucastro.nucdata.nucleus.Nucleus.from_Z_A">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_Z_A</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">dummy</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;creates a nucleus given Z and A&quot;&quot;&quot;</span>
+
+        <span class="c1"># checks if Z and A are valid inputs</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Nucleus Z and A must be integers&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">Z</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">A</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Nucleus Z and A must be non-negative&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">Z</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Nucleus Z can&#39;t be bigger than A&quot;</span><span class="p">)</span>
+
+        <span class="c1"># checks if neutron</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_cache</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">dummy</span><span class="p">)</span>
+
+        <span class="c1"># otherwise, finds element Z on the periodic table</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">PeriodicTable</span><span class="o">.</span><span class="n">lookup_Z</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">UnidentifiedElement</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Element </span><span class="si">{</span><span class="n">Z</span><span class="si">}</span><span class="s2"> could not be found&quot;</span><span class="p">)</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">abbreviation</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_cache</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">dummy</span><span class="p">)</span></div>
 
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -588,6 +614,18 @@ document.write(`
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">Z</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">Z</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">A</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">Z</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">A</span>
+        <span class="n">dummy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dummy</span> <span class="ow">and</span> <span class="n">other</span><span class="o">.</span><span class="n">dummy</span>
+        <span class="k">return</span> <span class="n">Nucleus</span><span class="o">.</span><span class="n">from_Z_A</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">dummy</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">Z</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">A</span>
+        <span class="n">dummy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dummy</span> <span class="ow">and</span> <span class="n">other</span><span class="o">.</span><span class="n">dummy</span>
+        <span class="k">return</span> <span class="n">Nucleus</span><span class="o">.</span><span class="n">from_Z_A</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">dummy</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Nucleus.cast">
 <a class="viewcode-back" href="../../../pynucastro.nucdata.html#pynucastro.nucdata.nucleus.Nucleus.cast">[docs]</a>
@@ -630,6 +668,25 @@ document.write(`
         <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">amin</span><span class="p">,</span> <span class="n">amax</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
             <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">element</span><span class="o">.</span><span class="n">abbreviation</span><span class="si">}{</span><span class="n">a</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="n">nuc_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">nuc_list</span></div>
+
+
+
+<div class="viewcode-block" id="get_all_nuclei">
+<a class="viewcode-back" href="../../../pynucastro.nucdata.html#pynucastro.nucdata.nucleus.get_all_nuclei">[docs]</a>
+<span class="k">def</span> <span class="nf">get_all_nuclei</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a list will every Nucleus that has a known mass&quot;&quot;&quot;</span>
+
+    <span class="n">nuc_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span> <span class="ow">in</span> <span class="n">_mass_table</span><span class="o">.</span><span class="n">mass_diff</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">Z</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">A</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">nuc</span> <span class="o">=</span> <span class="s2">&quot;n&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">el</span> <span class="o">=</span> <span class="n">PeriodicTable</span><span class="o">.</span><span class="n">lookup_Z</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+            <span class="n">nuc</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">el</span><span class="o">.</span><span class="n">abbreviation</span><span class="si">}{</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">nuc_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="n">nuc</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">nuc_list</span></div>
 
@@ -695,8 +752,8 @@ By pynucastro development team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>
